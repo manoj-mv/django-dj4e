@@ -1,0 +1,16 @@
+{% extends "samples/tags.html" %}
+
+{% block ifchanged_tag %}
+    {% for i in lst  %}
+        <br>
+        {% if forloop.counter0 != 0 %}
+            {% ifchanged i %}
+                <hr>
+            {% endifchanged %}
+            {{i}}
+        {% else %}
+            {{i}}
+        {% endif %}
+    {% endfor %}
+    <hr>
+{% endblock ifchanged_tag %}

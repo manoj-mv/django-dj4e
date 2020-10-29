@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+   <h5>including template 'navbar.html' </h5>
+   {% include 'samples/include_tag_test/navbar.html' %}
+   {% comment %} Lorem tag {% endcomment %}
+   <h4>lorem tag </h4>
+   {% lorem 2 p random %}
+   {% comment %} Lorem tag {% endcomment %}
+   <h4>'now' tag (display date & time) </h4>
+   
+</body>
+</html> 

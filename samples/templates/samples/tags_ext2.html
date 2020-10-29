@@ -1,0 +1,35 @@
+{% extends "samples/tags.html" %} {% comment %} extends tags test(template inheritance) {% endcomment %}
+
+{% block title %}
+    page 2
+{% endblock title %}
+{% block test %} 
+    <a href="{{url}}"> Back </a>
+    <br/><br/>
+    {{url}}
+    <br/><br/>
+    <a href='{{ifchanged_url}}'> ifchanged tag</a>
+{% endblock test %}
+
+{% comment %} 'autoescape' tag {% endcomment %}
+{% block autoescape_test %}
+    <h3> before turning off autoescape</h3>
+        {{txt}}
+    <h3> after turning off autoescape</h3>
+    {% autoescape off %}
+        {{txt}}
+    {% endautoescape %}
+{% endblock autoescape_test %}
+
+{% comment %} 'cycle' tag {% endcomment %}
+{% block cycle_tag %}
+    <h3>cycle tag</h3>
+    {% for i in lst %}
+    
+        <h5>'row{% cycle 1 2 3 4 5 as n %}'</h5>
+        <h6>{{n}}</h6>
+    
+    {% endfor %}
+{% endblock cycle_tag %}
+
+

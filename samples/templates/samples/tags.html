@@ -1,0 +1,41 @@
+{% comment %} base template file  {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>{% block title %}{% endblock  %}</title>
+    </head>
+    <body>
+    <div>
+        {% block test %}
+        {% endblock %}
+    </div>
+    <div>
+        {% block autoescape_test %}
+        
+        {% endblock autoescape_test %}
+    </div>
+    <div>
+        {% block cycle_tag %}
+        
+        {% endblock cycle_tag %}
+    </div>
+    <div>
+        {% block filter_tag %}
+        
+        {% endblock filter_tag %}
+    </div>
+    <div>
+        {% block dict_iteration %}
+        
+        {% endblock dict_iteration %}
+    </div>
+        {% block if_test %}
+        
+        {% endblock if_test %}
+    <div>
+        {% block ifchanged_tag %}
+        
+        {% endblock ifchanged_tag %}
+    </div>
+    </body>
+</html>

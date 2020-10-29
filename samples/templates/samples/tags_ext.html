@@ -1,0 +1,50 @@
+
+{% extends "samples/tags.html" %}
+
+{% block title %}
+    index page
+{% endblock title %}
+
+{% block test %}
+    <a href="{{url}}">Next Page</a>
+    <br>
+    {{url}}
+{% endblock %}
+
+{% comment %}'filter' tag  {% endcomment %}
+{% block filter_tag %}
+    <h5> filter content of the block(force_escape,lower)</h5>
+    {% filter force_escape|lower %}
+        <h1>This text will be HTML-escaped, and will appear in all lowercase.</h1>
+    {% endfilter %}
+{% endblock filter_tag %}
+
+{% comment %} iterate through dictionary {% endcomment %}
+{% block dict_iteration %}
+    <h5>loop through dictionary</h5>
+    {% for key,val in dic.items %}  {% comment %}'items' instead of 'items()' {% endcomment %}
+        {{key }} : {{val}}
+        <br>
+    {% endfor %}
+    {% comment %} iterate throuh list inside the dictionary {% endcomment %}
+    <h5> loop throuh list inside the dictionary</h5>
+    {% for i in dic.lst  %}
+        '{{i}}'
+        <br/>
+    {% endfor %}
+{% endblock %}
+
+{% comment %} filters inside  'if' {% endcomment %}
+
+{% block if_test %}
+    <h5>filters inside 'if'</h5>
+    {% if dic|length >= 0 %}
+        'dict length = {{dic|length}}'
+    {% endif %}
+    <br>
+    <h5>'ifequal' tag</h5>
+    {% ifequal dic.a 12 %}
+        a  == 12
+    {% endifequal %}
+{% endblock if_test %}
+
