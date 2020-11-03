@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>MusicLib</title>
+</head>
+<body>
+    <table border=1>
+    <th colspan=5>Track List</th>
+    <tr>
+        <td>Track</td>
+        <td>Length</td>
+        <td>Artist</td>
+        <td>Album</td>
+        <td>Rating</td>
+    </tr>
+    
+    {% for t in track %}
+    <tr>
+        <td>{{t.title}}</td>
+        <td>{{t.track_len}}</td>
+        <td>{{t.album.Artist.name}}</td>
+        <td>{{t.album.title}}</td>
+        <td>
+            {% load my_filters %}
+            {% for i in t.rating|num_to_range %}
+                <span class="fa fa-star checked"></span>
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <hr>
+    <br>
+    <h4>Select Song</h4>
+    <hr>
+    <form action="{% url 'MusicLib:detail_route' %}" method="post">
+        {% csrf_token %}
+        <label for="selected_song">Choose song :</label>
+        <select name="song_id" id="selected_song">
+            <option value="">--select--</option>
+            {% for t in track%}
+            <option value="{{t.id}}">{{t.title}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    </table>
+</body>
+</html>

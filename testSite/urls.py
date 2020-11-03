@@ -35,6 +35,7 @@ urlpatterns = [
         {'document_root':CSS_ROOT,'show_indexes':True},
         name='css_test'
     ),
-    path('samples/',include('samples.urls',namespace='samples'))
+    path('samples/',include('samples.urls',namespace='samples')),
+    path('music/',include('MusicLib.urls',namespace='music')),
 ]
 
