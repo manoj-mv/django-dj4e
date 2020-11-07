@@ -43,11 +43,15 @@
         <label for="selected_song">Choose song :</label>
         <select name="song_id" id="selected_song">
             <option value="">--select--</option>
-            {% for t in track%}
+            {% for t in track %}
             <option value="{{t.id}}">{{t.title}}</option>
             {% endfor %}
         </select>
-        <br><br>
+        <br>
+        {% if err_message %}
+            <p>{{err_message|safe}}</p>
+        {% endif %}
+        <br>
         <input type="submit" value="Submit">
     </form>
 

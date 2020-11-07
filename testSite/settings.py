@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'samples.apps.SamplesConfig',
     'MusicLib.apps.MusiclibConfig',
+    'authz_dj4e.apps.AuthzDj4EConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

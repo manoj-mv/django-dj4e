@@ -37,5 +37,7 @@ urlpatterns = [
     ),
     path('samples/',include('samples.urls',namespace='samples')),
     path('music/',include('MusicLib.urls',namespace='music')),
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('authz/',include('authz_dj4e.urls')),
 ]
 

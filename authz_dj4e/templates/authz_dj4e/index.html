@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>index</title>
+</head>
+<body>
+<h1> Current request.path is {{request.path}}</h1>
+{% if user.is_authenticated %}
+    <P>Authenticated as
+    <pre>
+    Name: {{user.get_full_name}}
+    Enail: {{user.email}}
+    Id : {{user.id}}
+    </pre>
+    </p>
+    <p> You can <a href="{% url 'logout' %}?next={% url 'authz_dj4e:open' %}">logout</a></p>
+{% else %}
+    <P>you are not loged in</p>
+    <p> You can <a href="{% url 'login' %}?next={{ request.path }}"> Login if you like</a></p>
+{% endif %}
+
+<ul>
+    <li>Go to <a href="{% url 'authz_dj4e:manual' %}">{{request.path}} (Protected by user.is_authenticated)</a></li>
+    <li>GO to <a href="{% url 'authz_dj4e:protect' %}">{{request.path}} (Protected by LoginRequiredMixin) </a></li>
+    <li>Go to <a href="{% url 'authz_dj4e:python' %}">(Dump request.user data in python)</a></li>
+</ul>
+
+
+</body>
+</html>

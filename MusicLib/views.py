@@ -18,17 +18,25 @@ from .models import Artist,Album,Track
 # using generic views
 
 class indexView(generic.ListView):
+    model=Track
     template_name = 'MusicLib/index.html'
     context_object_name = 'track'
-    def get_queryset(self):
-        return Track.objects.all()
+    # def get_queryset(self):
+    #     return Track.objects.all()
+    
 
-def detail_route(request):
+def detail_route(request,):
+    
     song_id = request.POST['song_id']
     # song_data = get_object_or_404(Track,pk=song_id)
     # return render(request,'MusicLib/detail.html',{'song_detail':song_data})
-    return HttpResponseRedirect(reverse('MusicLib:song_detail',args=(song_id,)))
-    # return render(request,'MusicLib/detail.html')
+    if song_id :
+        return HttpResponseRedirect(reverse('MusicLib:song_detail',args=(song_id,)))
+    else:
+        track=Track.objects.all()
+        # return HttpResponseRedirect(reverse('MusicLib:index',kwargs={'err_message':"you didn't select any songs"}))
+        return render(request,'MusicLib/index.html',{'track':track,'err_message':"<font color='red'>You didn't choose song</font>"})
+
 class songDetail(generic.DetailView):
     model = Track
     template_name='MusicLib/detail.html'
