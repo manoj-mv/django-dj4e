@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'samples.apps.SamplesConfig',
     'MusicLib.apps.MusiclibConfig',
     'authz_dj4e.apps.AuthzDj4EConfig',
+    'autos_dj4e.apps.AutosDj4EConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

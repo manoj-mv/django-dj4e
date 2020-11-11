@@ -1,0 +1,19 @@
+{% extends "autos_dj4e/base.html" %}
+
+{% block title %}
+    delete auto
+{% endblock title %}
+
+{% block content %}
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Do you want to delete <strong>{{auto.name}}</stong>
+        <br>
+        <input type="submit" value="Yes,Confirm">
+        <input type="submit"
+            onclick="window.location='{% url 'autos_dj4e:index' %}';return false"
+            value="Cancel"
+        >
+    </form>
+{% endblock content %}  

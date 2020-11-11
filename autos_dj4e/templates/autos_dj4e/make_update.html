@@ -1,0 +1,16 @@
+{% extends "autos_dj4e/base.html" %}
+{% block title %}
+ update make
+{% endblock title %}
+{% block content %}
+    <h1>Make</h1>
+    <form action="" method="post">
+    {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Update">
+        <input type="submit" 
+            onclick="window.location='{% url 'autos_dj4e:make_view' %}'; return false;"
+            value="Cancel"
+        >
+    </form>
+{% endblock content %}

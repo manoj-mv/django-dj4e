@@ -1,0 +1,42 @@
+{% extends "autos_dj4e/base.html" %}
+{% block title %}
+    index
+{% endblock %}
+
+{% block content %}
+
+<h1>Auto List</h1>
+
+{% if auto_list %}
+    <ul>
+    {% for auto in auto_list %}
+        <li>{{auto.name}}
+            ({{auto.make}})
+            &nbsp
+            (<a href = "{% url 'autos_dj4e:auto_edit' auto.id %}">Edit</a> | <a href="{% url 'autos_dj4e:auto_delete' auto.id %}">Delete</a>) 
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Auto list is empty</p>
+{% endif %}
+
+<p>
+{% if make_count > 0 %}
+    <a href="{% url 'autos_dj4e:auto_create' %}">Add an auto</a>
+{% else %}
+    Please add a make before you add an auto.
+{% endif %}
+</p>
+<p>
+{% if make_count > 0%}
+</p>
+{% endif %}
+{% if make_count > 0 %}
+    <a href="{% url 'autos_dj4e:make_view' %}">View makes</a>({{make_count}})
+    &nbsp |
+    <a href="{% url 'autos_dj4e:make_create' %}">Add a make</a>
+{% endif %}
+<br><br>
+<a href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+{% endblock %}

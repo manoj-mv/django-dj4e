@@ -1,0 +1,18 @@
+{% extends "autos_dj4e/base.html" %}
+
+{% block title %}
+    confirm delete
+{% endblock title %} 
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+<p>Do you want to delete make 
+    <strong>"{{make_to_delete.name}}"</strong>
+</p>
+<input type="Submit" value="Delete">
+<input type="submit"
+    onclick="window.location='{% url 'autos_dj4e:make_view' %}';return false;"
+    value="Cancel">
+</form>
+{% endblock content %}   
