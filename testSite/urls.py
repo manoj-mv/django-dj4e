@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE_ROOT = os.path.join(BASE_DIR,'site')
 CSS_ROOT = os.path.join(BASE_DIR,'css')
 urlpatterns = [
+    path('',include('home.urls',namespace='home')),
     path('admin/', admin.site.urls),
     path('polls/',include('polls.urls')),
     re_path(r'^site/(?P<path>.*)$',serve,
@@ -40,5 +41,6 @@ urlpatterns = [
     path('accounts/',include('django.contrib.auth.urls')),
     path('authz/',include('authz_dj4e.urls')),
     path('autos/',include('autos_dj4e.urls',namespace='autos')),
+    path('crispy/',include('crispy_dj4e.urls',namespace='crispy')),
 ]
 

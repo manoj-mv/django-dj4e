@@ -30,17 +30,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'polls.apps.PollsConfig',
     'samples.apps.SamplesConfig',
     'MusicLib.apps.MusiclibConfig',
     'authz_dj4e.apps.AuthzDj4EConfig',
     'autos_dj4e.apps.AutosDj4EConfig',
+    'crispy_dj4e.apps.CrispyDj4EConfig',
+
+    # built in
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # extentions
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

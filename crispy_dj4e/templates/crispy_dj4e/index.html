@@ -1,0 +1,24 @@
+{% extends 'home/base_menu.html' %}
+
+<!-- {% block title %}
+    crispy
+{% endblock title %} -->
+
+
+{% block welcome %}
+    <h1>Test Form</h1>
+{% endblock welcome %}
+
+{% block content %}
+<p>
+    {% load crispy_forms_tags %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type='submit' value="Submit">
+    </form>
+    
+</p>
+{% endblock content %}
+    
+    
