@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'authz_dj4e.apps.AuthzDj4EConfig',
     'autos_dj4e.apps.AutosDj4EConfig',
     'crispy_dj4e.apps.CrispyDj4EConfig',
+    'unesco.apps.UnescoConfig',
 
     # built in
     'django.contrib.admin',
@@ -46,8 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # extentions
+    # extentsions
     'crispy_forms',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
