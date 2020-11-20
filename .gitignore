@@ -11,7 +11,7 @@ media
 *.bak
 
 # Python #
-# *.py[cod]
+*.py[cod]
 *$py.class
 
 # Distribution / packaging
