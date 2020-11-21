@@ -43,5 +43,6 @@ urlpatterns = [
     path('autos/',include('autos_dj4e.urls',namespace='autos')),
     path('crispy/',include('crispy_dj4e.urls',namespace='crispy')),
     # path('unesco/',include('unesco.urls',namespace='unesco')),
+    path('bootstrap/',include('bootstrap_learn.urls',namespace='bs4')),
 ]
 

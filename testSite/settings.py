@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'autos_dj4e.apps.AutosDj4EConfig',
     'crispy_dj4e.apps.CrispyDj4EConfig',
     'unesco.apps.UnescoConfig',
+    'bootstrap_learn.apps.BootstrapLearnConfig',
 
     # built in
     'django.contrib.admin',
