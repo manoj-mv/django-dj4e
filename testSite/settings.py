@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'crispy_dj4e.apps.CrispyDj4EConfig',
     'unesco.apps.UnescoConfig',
     'bootstrap_learn.apps.BootstrapLearnConfig',
+    'myArticles.apps.MyarticlesConfig',
 
     # built in
     'django.contrib.admin',
@@ -52,6 +53,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_extensions',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,0 +1,37 @@
+{% extends 'home/base_menu1.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    My Articles
+{% endblock title %}
+{% block logo %}
+<i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i> &nbsp&nbsp
+{% endblock logo %} 
+
+
+{% block welcome %}
+    <div class="row justify-content-center mt-4 hrr">
+        <div class="col-10 col-sm-6  text-center">
+            <h1>My Articles</h1>
+            <hr>
+        </div>
+    </div>   
+{% endblock welcome %}
+
+{% block content %}
+    <form action="" method="POST">
+    {% csrf_token %}
+    <div class="row justify-content-center ">
+            <div class="col-12 col-sm-6">
+                {{form|crispy}}
+            </div>
+    </div>  
+    <div class="row justify-content-center">
+        <div class="col-auto ">
+        <input type="submit" class="btn btn-primary"  value="Submit">
+        </div>  
+        <div class="col-auto">
+        <input type="submit" class="btn btn-primary" onclick="window.location='{% url 'articles:index' %}'" value="cancel">
+        </div>
+    </div>  
+    
+{% endblock content %}

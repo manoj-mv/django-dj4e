@@ -1,0 +1,65 @@
+{% extends 'home/base_menu1.html' %}
+
+{% block title %}
+    My Articles
+{% endblock title %}
+{% block logo %}
+<i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i> &nbsp&nbsp
+{% endblock logo %} 
+
+
+{% block welcome %}
+    <div class="row justify-content-center mt-4 hrr">
+        <div class="col-10 col-sm-6  text-center">
+            <h1>My Articles</h1>
+            <hr>
+        </div>
+    </div>   
+{% endblock welcome %}
+
+{% block content %}
+    {% for article in article_list %}
+        <div class="row justify-content-center mt-2">
+
+            <div class="col-10 col-sm-4  bg-light p-2">
+                {{article.title}}
+                
+            </div>
+            
+            <div class="col-10 col-sm-4  bg-light p-2">
+                {% if article.owner == user %}
+                <div class="row float-right">
+                    <div class="col p-2 m-2">
+                        <a href="{% url 'articles:article_update' article.id %}"><i class="fa fa-pencil-square edit_ico fa-lg"  aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col p-2 m-2">
+                        <a href="{% url 'articles:article_delete' article.id %}"><i class="fa fa-trash-o del_ico fa-lg"  aria-hidden="true"></i>
+                        </i>
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-10 col-sm-4  bg-light p-4">
+                </div>
+                {% endif %}
+
+            </div>
+            
+            
+
+        </div> 
+        
+    {% endfor %}
+
+    <div class="row justify-content-center mt-2">
+        
+        <div class="col-10  mr-2 p-2">
+                    <a href="{% url 'articles:article_create' %}" >
+                        <i class="fa fa-plus-square " aria-hidden="true"> Add article</i>
+                    </a>
+        </div>
+            
+    </div>  
+    
+{% endblock content %}

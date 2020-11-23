@@ -44,5 +44,6 @@ urlpatterns = [
     path('crispy/',include('crispy_dj4e.urls',namespace='crispy')),
     # path('unesco/',include('unesco.urls',namespace='unesco')),
     path('bootstrap/',include('bootstrap_learn.urls',namespace='bs4')),
+    path('myarts/',include('myArticles.urls',namespace="articles")),
 ]
 
