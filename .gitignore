@@ -88,5 +88,4 @@ GitHub.sublime-settings
 
 # files
 unesco_db.sqlite3
-media/images/*
-!media/images/.gitkeep
+
