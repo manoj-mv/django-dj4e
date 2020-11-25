@@ -1,0 +1,43 @@
+{% extends 'pics_dj4e/base.html' %}
+
+{% load humanize %}
+
+{% block head %}
+
+
+{% endblock head %}
+  
+
+
+
+{% block content %}
+
+<div class="row justify-content-center" >
+    <div class="col text-center">
+        Do you wants to delete {{pic.name}}  ?
+    </div>
+</div>
+<div class="row justify-content-center mt-3" >
+    <form action="" method="POST">
+    <div class="col col-sm-3 btn-group text-center">
+        
+            {% csrf_token %}
+            <input type="submit"  class="btn btn-danger" value="Confirm">
+            <a href="{% url 'pics:pics_index' %}" class="btn btn-secondary">Cancel</a>
+        
+        
+    </div>
+    </form>
+</div>
+<div class="row justify-content-cener mt-3">
+    <div class="col-12 col-sm-12 btn-gorup">
+        <a href="{% url 'pics:pic_create'%}">create</a>
+        <a href="{% url 'logout' %}?next={% url 'pics:pics_index' %}">Logout</a>
+        <a href="{% url 'login' %}?next={% url 'pics:pics_index' %}">Login</a>
+    </div>
+    
+</div>
+
+
+{% endblock content %}
+    

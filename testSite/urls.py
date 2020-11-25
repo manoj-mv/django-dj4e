@@ -16,7 +16,8 @@ Including another URLconf
 import os
 from django.contrib import admin
 from django.urls import path,include,re_path
-
+from django.conf.urls.static import static
+from django.conf import settings
 # from django.conf.urls import url  #depricated(alias used: re_path())
 from django.views.static import serve
 
@@ -45,5 +46,9 @@ urlpatterns = [
     # path('unesco/',include('unesco.urls',namespace='unesco')),
     path('bootstrap/',include('bootstrap_learn.urls',namespace='bs4')),
     path('myarts/',include('myArticles.urls',namespace="articles")),
+    path('pics/',include('pics_dj4e.urls',namespace='pics')),
 ]
+
+if settings.DEBUG == True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
