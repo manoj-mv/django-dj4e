@@ -11,6 +11,10 @@ class IndexView(OwnerListView):
 class Pic_CreateView(OwnerCreateView):
     model=pic
     fields=['name','img']
+   
+
+        
+
 
 class PicEditView(OwnerUpdateView):
     model=pic

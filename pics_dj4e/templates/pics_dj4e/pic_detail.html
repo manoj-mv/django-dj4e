@@ -20,13 +20,13 @@
 
 
 <div class="row justify-content-center mt-4">
-  <div class="col-6 col-sm-3 btn-gorup mt-3 p-1 text-left">
+  <div class="col-8 col-sm-5 btn-gorup mt-3 p-1 text-left">
       <a href="{% url 'pics:pic_create'%}"><i class="fa fa-plus-square" aria-hidden="true"> create</i></a> |
       <a href="{% url 'logout' %}?next={% url 'pics:pics_index' %}"><i class="fa fa-sign-out" aria-hidden="true"> Logout</i></a>
       | <a href="{% url 'login' %}?next={% url 'pics:pics_index' %}"><i class="fa fa-sign-in" aria-hidden="true"> Login</i></a>
   </div>
 
-  <div class="col-6 col-sm-3  mt-2 text-right">
+  <div class="col-3 col-sm-3  mt-2 text-right">
      <a href="{% url 'pics:pics_index' %}" class="btn btn-secondary">Back</a>
   </div>
     
