@@ -1,0 +1,35 @@
+{% extends 'home/base_menu1.html' %}
+
+{% block title %}
+    My Forum
+{% endblock title %}
+{% block logo %}
+<i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i> &nbsp&nbsp
+{% endblock logo %} 
+
+
+{% block welcome %}
+    <div class="row justify-content-center mt-4 hrr">
+        <div class="col-10 col-sm-6  text-center">
+            <h1>Delete {{forum.title}}</h1>
+            <hr>
+        </div>
+    </div>   
+{% endblock welcome %}
+
+{% block content %}
+  
+<div class="row justify-content-center">
+    <div class="col-auto ">
+    <form action="" method="post">
+        {% csrf_token %}
+    <input type="submit" class="btn btn-primary"  value="Confirm">
+    </div>  
+    <div class="col-auto">
+    <input type="submit" class="btn btn-primary" onclick="window.location='{% url 'forum:forum_index' %}';return false;" value="cancel">
+</form>
+</div>
+
+</div>  
+    
+{% endblock content %}

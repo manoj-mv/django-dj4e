@@ -47,6 +47,7 @@ urlpatterns = [
     path('bootstrap/',include('bootstrap_learn.urls',namespace='bs4')),
     path('myarts/',include('myArticles.urls',namespace="articles")),
     path('pics/',include('pics_dj4e.urls',namespace='pics')),
+    path('forum/',include('forum_dj4e.urls',namespace='forum')),
 ]
 
 if settings.DEBUG == True:

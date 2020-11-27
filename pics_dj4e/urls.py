@@ -11,4 +11,5 @@ urlpatterns = [
     path('edit/<int:pk>',views.PicEditView.as_view(success_url=reverse_lazy('pics:pics_index')),name='pic_update'),
     path('detail/<int:pk>',views.PicDetailView.as_view(),name='pic_detail'),
     path('delete/<int:pk>',views.PicDeleteView.as_view(success_url=reverse_lazy('pics:pics_index')),name='pic_delete'),
+     path('ad_picture/<int:pk>', views.stream_file, name='ad_picture'),
 ]

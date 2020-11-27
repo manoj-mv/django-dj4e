@@ -1,0 +1,65 @@
+{% extends 'home/base_menu1.html' %}
+
+{% block title %}
+    Forum
+{% endblock title %}
+{% block logo %}
+<i class="fa fa-file-text-o fa-2x" aria-hidden="true"></i> &nbsp&nbsp
+{% endblock logo %} 
+
+
+{% block welcome %}
+    <div class="row justify-content-center mt-4 hrr">
+        <div class="col-10 col-sm-6  text-center">
+            <h1>Forums</h1>
+            <hr>
+        </div>
+    </div>   
+{% endblock welcome %}
+
+{% block content %}
+    {% for forum in forum_list %}
+        <div class="row justify-content-center mt-2">
+
+            <div class="col-10 col-sm-4  bg-light p-2">
+                <a href="{% url 'forum:forum_detail' forum.id %}">{{forum.title}}</a> 
+                
+            </div>
+            
+            <div class="col-10 col-sm-4  bg-light p-2">
+                {% if forum.owner == user %}
+                <div class="row float-right">
+                    <div class="col p-2 m-2">
+                        <a href="{% url 'forum:forum_update' forum.id %}"><i class="fa fa-pencil-square edit_ico fa-lg"  aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="col p-2 m-2">
+                        <a href="{% url 'forum:forum_delete' forum.id %}"><i class="fa fa-trash-o del_ico fa-lg"  aria-hidden="true"></i>
+                        </i>
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-10 col-sm-4  bg-light p-4">
+                </div>
+                {% endif %}
+
+            </div>
+            
+            
+
+        </div> 
+        
+    {% endfor %}
+
+    <div class="row justify-content-center mt-2">
+        
+        <div class="col-10  mr-2 p-2">
+                    <a href="{% url 'forum:forum_create' %}" >
+                        <i class="fa fa-plus-square bg-warning " aria-hidden="true"> Add Forum</i>
+                    </a>
+        </div>
+            
+    </div>  
+    
+{% endblock content %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap_learn.apps.BootstrapLearnConfig',
     'myArticles.apps.MyarticlesConfig',
     'pics_dj4e.apps.PicsDj4EConfig',
+    'forum_dj4e.apps.ForumDj4EConfig',
 
     # built in
     'django.contrib.admin',
