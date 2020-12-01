@@ -48,6 +48,7 @@ urlpatterns = [
     path('myarts/',include('myArticles.urls',namespace="articles")),
     path('pics/',include('pics_dj4e.urls',namespace='pics')),
     path('forum/',include('forum_dj4e.urls',namespace='forum')),
+    path('chat/',include('chat_dj4e.urls',namespace='chat')),
 ]
 
 if settings.DEBUG == True:
