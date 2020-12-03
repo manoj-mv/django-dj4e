@@ -3,7 +3,7 @@
 
 {% block content %}
     <a href="{% url 'chat:syntax' %}" class="btn btn-primary p3 ">Syntax</a>|
-    <a href="" class="btn btn-primary p3 ">Json dump</a> |
+    <a href="{% url 'chat:message_list' %}" class="btn btn-primary p3 ">Json dump</a> |
     <a href="{% url 'chat:chat_view' %}" class="btn btn-primary p3 ">Chat</a>
     <br><br>
     <div id="json_data">

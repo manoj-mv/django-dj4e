@@ -1,0 +1,12 @@
+{% extends 'home/base_menu.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="Submit">
+        <Button onclick="window.location='{% url 'fav:index' %}';return false;">Cancel</Button>
+    </form>
+{% endblock content %}
+    

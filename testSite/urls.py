@@ -49,6 +49,7 @@ urlpatterns = [
     path('pics/',include('pics_dj4e.urls',namespace='pics')),
     path('forum/',include('forum_dj4e.urls',namespace='forum')),
     path('chat/',include('chat_dj4e.urls',namespace='chat')),
+    path('fav/',include('favourite.urls',namespace='fav')),
 ]
 
 if settings.DEBUG == True:

@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy,reverse
 from django import forms
 from django.views.generic import CreateView
+from django.contrib.humanize.templatetags.humanize import naturaltime
 import time
 
 from .models import Message
@@ -49,3 +50,14 @@ class  ChatView(LoginRequiredMixin, View):
         message = Message(text=request.POST['text'],owner = request.user)
         message.save()
         return redirect(reverse('chat:chat_view'))
+
+class MessageList(LoginRequiredMixin,View):
+    def get(self,request):
+        messages = Message.objects.all().order_by('-created_at')[:10]
+        print(messages)
+        result = []
+        for msg in messages:
+            res = [msg.text,naturaltime(msg.created_at)]
+            result.append(res)
+        return JsonResponse(result,safe=False) 
+

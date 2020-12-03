@@ -1,4 +1,5 @@
 {% extends 'home/base_menu.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
     <form action="" method="post">
@@ -8,15 +9,37 @@
         <input type="reset" value="Clear">
         <a href="{% url 'chat:chat_index' %}" class="btn">Cancel</a>
     </form>
-
-    <div class="row">
-        <div class="col">
-            <p id=''>
-
-
+    <br>
+    <div class="row center-block">
+        <div class="col-6 col-sm-6">
+            <p id='chat_content'>
+                <img src="{% static 'chat_dj4e/spinner.gif' %}" alt="Loading symbol"> 
             </p>
         </div>
     </div>
+
+    <script type="text/javascript">
+        // function for requesting json, called repeatedly in ech 4 seconds
+        function UpdateMessage(){
+            console.log('Requesting Json');
+            $.getJSON('{% url 'chat:message_list' %}', function(msg_list){
+                console.log('Json',msg_list);
+                $('#chat_content').empty();
+                for (var i = 0; i < msg_list.length; i++ ) {
+                    msg  = msg_list[i];
+                    $('#chat_content').append('<p>' + msg[0] + '<br>&nbsp&nbsp' + msg[1] + '</p>\n');
+                }
+                setTimeout('UpdateMessage()', 4000);
+            });
+        }
+
+        // calling updateMessage() & make json requests are not cached
+
+        $(document).ready( function(){
+            $.ajaxSetup({cache : false});
+            setTimeout('UpdateMessage()', 2000);
+        });
+    </script>
 {% endblock content %}
 
 

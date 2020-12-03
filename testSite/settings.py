@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'pics_dj4e.apps.PicsDj4EConfig',
     'forum_dj4e.apps.ForumDj4EConfig',
     'chat_dj4e.apps.ChatDj4EConfig',
+    'favourite.apps.FavouriteConfig',
 
     # built in
     'django.contrib.admin',

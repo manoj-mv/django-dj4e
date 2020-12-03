@@ -1,0 +1,38 @@
+{% extends 'home/base_menu1.html' %}
+
+
+{% block content %}
+{% if thing_list %}
+  <ul>
+    {% for thing in thing_list %}
+      <div class="row mt-2">
+      
+        <div class="col-12 col-sm-7">
+          <li>
+                <a href="">{{ thing.title }}</a>
+                {% if thing.owner_id == user.id %}
+                (<a href="{% url 'fav:thing_update' thing.id %}">Edit</a> |
+                <a href="{% url 'fav:thing_delete' thing.id %}">Delete</a>)
+                {% endif %} 
+        </div>
+        <div class="col-12 col-sm-3">
+          {% if user.is_authenticated %}
+            <span class="fa-stack ">
+              <i class="fa fa-heart-o fa-stack-1x" aria-hidden="true"></i>
+              <i class="fa fa-heart fa-stack-1x" style="display:None;color:red" aria-hidden="true"></i>
+            </span> 
+          {% endif %}
+        </li> 
+        </div>
+    </div>
+    {% endfor %} 
+    
+  </ul>
+      
+      {{favourites}}
+        
+        <a href="{% url 'fav:thing_create' %}">Create Thing</a>|
+        <a href="{% url 'logout' %}?next={% url 'fav:index' %}">Logout</a>
+    {% endif %}
+{% endblock content %}
+    
