@@ -17,10 +17,23 @@
         </div>
         <div class="col-12 col-sm-3">
           {% if user.is_authenticated %}
-            <span class="fa-stack ">
-              <i class="fa fa-heart-o fa-stack-1x" aria-hidden="true"></i>
-              <i class="fa fa-heart fa-stack-1x" style="display:None;color:red" aria-hidden="true"></i>
+            
+            {% if thing.id in favourites %}
+            <span class="fa-stack fav_test">
+              <i class="fa fa-heart-o fa-stack-1x" id='unfavourite_btn_{{thing.id}}'  style="display:none" aria-hidden="true"></i> 
+              <i  class="fa fa-heart fa-stack-1x" id='favourite_btn_{{thing.id}}' style="color:red" aria-hidden="true"></i>
+              <input type="hidden" name='thing_id' value = {{thing.id}}>
             </span> 
+            {% endif %}
+            {% if thing.id not in favourites %}
+            <span  class="fa-stack fav_test ">
+              <i class="fa fa-heart-o fa-stack-1x" id='unfavourite_btn_{{thing.id}}' aria-hidden="true"></i>
+              <i class="fa fa-heart fa-stack-1x"  id='favourite_btn_{{thing.id}}' style="display:none;color:red" aria-hidden="true"></i>
+              <input type="hidden" name='thing_id'  value = {{thing.id}}>
+            </span> 
+            {% endif %}
+              
+            
           {% endif %}
         </li> 
         </div>
@@ -30,9 +43,63 @@
   </ul>
       
       {{favourites}}
-        
+        <br>
         <a href="{% url 'fav:thing_create' %}">Create Thing</a>|
         <a href="{% url 'logout' %}?next={% url 'fav:index' %}">Logout</a>
     {% endif %}
+
+<script type="text/javascript">
+  console.log('script');
+  function Favourite(fav_icon,unfav_icon,thing_id){
+    $.post(
+        "{% url 'fav:add_favourite' pk=123 %}".replace(/123/,thing_id),
+        {'csrfmiddlewaretoken' : '{{ csrf_token }}'},
+        function(data,status){
+          console.log('favourited:',status);
+          if(status=='success'){
+            fav_icon.style.display = 'inline';
+            unfav_icon.style.display ='none';
+          }
+        }
+      );
+  }
+
+  function UnFavourite(fav_icon,unfav_icon, thing_id){
+    $.post(
+      '{% url 'fav:unfavourite' pk=123 %}'.replace(/123/,thing_id),
+      {'csrfmiddlewaretoken' : '{{ csrf_token }}'},
+      function(data,status){
+          console.log('unfavourited :', status);
+          fav_icon.style.display = 'none';
+          unfav_icon.style.display ='inline';
+      }
+    );
+  }
+  $(document).ready(function(){
+      console.log('ready')
+      $('.fav_test').click(function(){
+      // use below ajaxSetup way or pass cdrf_token inside post
+      // $.ajaxSetup({
+      //   headers: { "X-CSRFToken": '{{csrf_token}}' }
+      // });
+      
+      // reference: https://stackoverflow.com/a/2908430
+      let thing_id =$(this).children("input")[0].value;             // access thing_id from hidden html input element
+      let icon_elements = $(this).children("i");                    // access fa-icons
+      let unfav_icon = icon_elements[0];                            // favourite icon
+      let fav_icon = icon_elements[1];                              // unfavourite icon
+      // console.log(typeof(fav_elmnt));
+      console.log('unfav_el',unfav_icon,'fav_el',fav_icon);
+      // $(this).children("input")[0].value)
+      if (fav_icon.style.display == 'none'){
+          Favourite(fav_icon, unfav_icon, thing_id);
+      }
+      else if (unfav_icon.style.display == 'none'){
+          UnFavourite(fav_icon, unfav_icon, thing_id);
+      }
+    });
+  });
+
+</script>
 {% endblock content %}
     
